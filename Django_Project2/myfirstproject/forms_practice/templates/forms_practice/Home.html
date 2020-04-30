@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <h3>Enter Detail</h3>
+    <table>
+        <tr>
+            <td> <label>Name</label></td>
+            <td> {{form.username}}</td>
+        </tr>
+        <tr>
+            <td> <label>EmailId</label>
+                </td>
+            <td>{{form.emailid}}</td>
+        </tr>
+        
+    </table>
+       
+       
+       <br>
+        
+        <input type="submit" value="Submit">
+    
+    
+    </form>
+    <style type="text/css">
+    table {
+    border:1px solid black;
+    border-collapse: collapse;
+    }
+    table tr {
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+    }
+
+    table td {
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    }
+    table th{
+        border-left: 1px solid #000;
+    border-right: 1px solid #000;
+   
+    }
+    </style>
+    <br>
+    <br>
+    <h3>Detail Of User</h3>
+    <table style="border: 1px solid;">
+        <tr>
+            <th>Name</th>
+            <th>EmailId</th>
+            <th>Update Record</th>
+            <th>Delete Record</th>
+        </tr>
+    <form action="" method="POST">
+    {%for i in data%}
+    <tr>
+        <td>
+     {{i.username}}
+    </td>
+    <td>
+        {{i.emailid}}
+    </td>
+    <td>
+        <a href="{% url 'update' i.id%}">Update</a>
+       
+    </td>
+    <td>
+        <a href="{% url 'delete' i.id%}">Delete</a>
+    </td>
+    </tr>
+    {%endfor%}
+</form>
+</table>
+</body> 
+</html>
